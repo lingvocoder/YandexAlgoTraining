@@ -1,6 +1,9 @@
 const fs = require('fs');
 const fileContent = fs.readFileSync( "input.txt", "utf8");
-const str = fileContent.toString().trim().split(/[ \n]+/);
+const strArr = fileContent.toString().trim().split(/[ \n|\r]+/);
+
+const result = countUniqueWords(strArr);
+fs.writeFileSync("output.txt", result.toString());
 
 function countUniqueWords(strArr) {
     let hashMap = {};
@@ -11,7 +14,3 @@ function countUniqueWords(strArr) {
     }
     return Object.keys(hashMap).length;
 }
-
-
-const result = countUniqueWords(str);
-fs.writeFileSync("output.txt", result.toString());
