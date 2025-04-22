@@ -1,6 +1,6 @@
 const fs = require('fs');
 const fileContent = fs.readFileSync("input.txt", "utf8");
-const [nums, value] = fileContent.toString().split("\n");
+const [nums, value] = fileContent.toString().trim().split("\n");
 const readInt = (param) => parseFloat(param);
 const readArray = (seq, separator) => seq.trim().split(separator).map(value => Number(value));
 
@@ -46,7 +46,7 @@ function addKyeBoardButton1(nums, value) {
     }
     let numberStr = number.toString().split('').map(value => Number(value));
 
-    //Хотя здесь сложность O(n^2), но оба массива короткие (10 символов и 4 символа соответственно), поэтому алгоритм не потеряет в скорости
+    //Хотя здесь сложность O(n^2), но оба массива короткие (10 символов и 5 символов соответственно), поэтому алгоритм не потеряет в скорости
     for (let i = 0; i < countArr.length; i++) {
         let currIdx = 0;
         if (countArr[i] !== 0) {
