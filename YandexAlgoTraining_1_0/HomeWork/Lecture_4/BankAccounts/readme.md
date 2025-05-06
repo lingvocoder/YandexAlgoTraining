@@ -35,7 +35,8 @@
 - **_TRANSFER name1 name2 sum_** — перевести сумму sum со счета клиента **_name1_** на счет клиента **_name2_**. Если у
   какого-либо клиента нет счета, то ему создается счет.
 - **_INCOME p_** — начислить всем клиентам, у которых открыты счета, p% от суммы счета. Проценты начисляются только
-  клиентам с положительным остатком на счету, если у клиента остаток отрицательный, то его счет не меняется. После начисления процентов сумма на счету остается
+  клиентам с положительным остатком на счету, если у клиента остаток отрицательный, то его счет не меняется. После
+  начисления процентов сумма на счету остается
   целой, то есть начисляется только целое число денежных единиц.
   Дробная часть начисленных процентов отбрасывается.
 
@@ -46,10 +47,12 @@
 
 ### Примеры
 
-| Ввод                                                                                                                                                                                                                                                                                                                               |                                      Вывод                                      |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------:|
-| DEPOSIT Ivanov 100<br>INCOME 5<br>BALANCE Ivanov<br>TRANSFER Ivanov Petrov 50<br>WITHDRAW Petrov 100<br>BALANCE Petrov<br>BALANCE Sidorov                                                                                                                                                                                          |                              105<br> -50<br>ERROR                               | 
-| BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Ivanov 100<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Petrov 150<br>BALANCE Petrov<br>DEPOSIT Ivanov 10<br>DEPOSIT Petrov 15<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Ivanov 46<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Petrov 14<br>BALANCE Ivanov<br>BALANCE Petrov | ERROR<br>ERROR<br>100<br>ERROR<br>150<br>110<br>165<br>156<br>165<br>156<br>179 |
+| Ввод                                                                                                                                                                                                                                                                                                                               |                                          Вывод                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------:|
+| DEPOSIT Ivanov 100<br>INCOME 5<br>BALANCE Ivanov<br>TRANSFER Ivanov Petrov 50<br>WITHDRAW Petrov 100<br>BALANCE Petrov<br>BALANCE Sidorov                                                                                                                                                                                          |                                   105<br> -50<br>ERROR                                   | 
+| BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Ivanov 100<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Petrov 150<br>BALANCE Petrov<br>DEPOSIT Ivanov 10<br>DEPOSIT Petrov 15<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Ivanov 46<br>BALANCE Ivanov<br>BALANCE Petrov<br>DEPOSIT Petrov 14<br>BALANCE Ivanov<br>BALANCE Petrov |     ERROR<br>ERROR<br>100<br>ERROR<br>150<br>110<br>165<br>156<br>165<br>156<br>179      |
+| BALANCE a<br>BALANCE b<br>DEPOSIT a 100<br>BALANCE a<br>BALANCE b<br>WITHDRAW a 20<br>BALANCE a<br>BALANCE b<br>WITHDRAW b 78<br>BALANCE a<br>BALANCE b<br>WITHDRAW a 784<br>BALANCE a<br>BALANCE b<br>DEPOSIT b 849<br>BALANCE a<br>BALANCE b                                                                                     | ERROR<br>ERROR<br>100<br>ERROR<br>80<br>ERROR<br>80<br>-78<br>-704<br>-78<br>-704<br>771 
+|
 
 
 
