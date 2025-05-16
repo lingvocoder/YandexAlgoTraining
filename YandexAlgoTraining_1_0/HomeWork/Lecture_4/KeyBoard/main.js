@@ -3,7 +3,7 @@ const fileContent = fs.readFileSync("input.txt", "utf8");
 const [n, c, k, p] = fileContent.toString().trim().split(/\r?\n/);
 
 
-const result = calcKeyboardResource1(n, c, k, p);
+const result = calcKeyboardResource3(n, c, k, p);
 fs.writeFileSync("output.txt", result.toString());
 
 //83ms, 12.15Mb
@@ -33,6 +33,7 @@ function calcKeyboardResource(n, c, k, p) {
     return resArr.join('\n');
 
 }
+
 //Сортировка подсчетом 81ms, 12.16Mb
 function calcKeyboardResource1(n, c, k, p) {
     const keys = Number(n);
@@ -62,7 +63,7 @@ function calcKeyboardResource2(n, c, k, p) {
     const resourceArr = new Array(keys).fill(0);
 
     for (let i = 0; i < combinations; i++) {
-        resourceArr[keySeq[i]-1]++;
+        resourceArr[keySeq[i] - 1]++;
     }
 
     for (let k = 0; k < keys; k++) {
@@ -70,4 +71,36 @@ function calcKeyboardResource2(n, c, k, p) {
     }
     return resourceArr.join('\n');
 
+}
+
+//Два словаря 83ms, 12.15Mb
+function calcKeyboardResource3(n, c, k, p) {
+    const keys = Number(n);
+    const combinations = Number(k);
+    const keySeq = p.split(' ').map(value => Number(value));
+    const keyResource = c.split(' ').map(value => Number(value));
+    const resourceMap = {};
+    const impressionsMap = {};
+    let resArr = [];
+
+    for (let k = 1; k <= keys; k++) {
+        if (!resourceMap.hasOwnProperty(k)) {
+            resourceMap[k] = keyResource[k - 1];
+        }
+    }
+    for (let j = 0; j < combinations; j++) {
+        if (!impressionsMap.hasOwnProperty(keySeq[j])) {
+            impressionsMap[keySeq[j]] = 1;
+        } else {
+            impressionsMap[keySeq[j]]++;
+        }
+    }
+    for (const key in resourceMap) {
+        if (resourceMap[key] >= impressionsMap[key]) {
+            resArr.push('NO');
+        } else {
+            resArr.push('YES');
+        }
+    }
+    return resArr.join('\n');
 }
