@@ -2,7 +2,7 @@ const fs = require('fs');
 const fileContent = fs.readFileSync("input.txt", "utf8");
 const [N, ...dimensions] = fileContent.toString().trim().split(/\r?\n/);
 
-const result = buildPyramid(N, dimensions);
+const result = buildPyramid1(N, dimensions);
 fs.writeFileSync("output.txt", result.toString());
 
 //399ms, 46.85Mb
@@ -28,7 +28,7 @@ function buildPyramid(n, dimensions) {
 }
 
 //356ms, 46.83Mb Оптимизируем проверку условия за счёт блока else
-function buildPyramid(n, dimensions) {
+function buildPyramid1(n, dimensions) {
     const blocks = Number(n);
     const params = {};
     let maxHeight = 0;
