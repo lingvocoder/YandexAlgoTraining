@@ -5,7 +5,7 @@ const result = countZeroSumRanges2(nums);
 fs.writeFileSync('output.txt', result.toString(), 'utf8');
 
 
-//Наивный подход. Сложность O(n^3)
+//Наивный подход. Сложность O(N^3)
 function countZeroSumRanges(nums) {
     let total = 0;
 
@@ -23,7 +23,7 @@ function countZeroSumRanges(nums) {
     return total;
 }
 
-//Сложность O(n^2)
+//Сложность O(N^2)
 function countZeroSumRanges1(nums) {
     let total = 0;
 
@@ -31,15 +31,14 @@ function countZeroSumRanges1(nums) {
         let rangeSum = 0
         for (let j = i; j < nums.length; j++) {
             rangeSum += nums[j];
-            console.log(rangeSum)
             if (rangeSum === 0) {
                 total++;
             }
         }
     }
-    // return total;
+    return total;
 }
-
+//Сложность O(N)
 function countZeroSumRanges2(nums) {
     let prefixSumCache = {0: 1};
     let currSum = 0;

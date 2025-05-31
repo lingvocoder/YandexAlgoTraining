@@ -18,7 +18,7 @@ function countZeros(range, nums) {
     }
     return counter;
 }
-
+//Решение за O(N+M)
 function countZeros1(range, nums) {
     const [left, right] = range.split(' ').map(num => Number(num));
     nums = nums.split(' ').map(num => Number(num));
