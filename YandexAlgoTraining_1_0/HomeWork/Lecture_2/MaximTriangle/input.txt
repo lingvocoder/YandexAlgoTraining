@@ -1,7 +1,14 @@
-3
-440
-220 closer
-300 further
-
-
-
+13
+540
+3200 closer
+1950 closer
+1220 further
+2760 closer
+1670 further
+3360 further
+2790 closer
+2420 closer
+290 further
+3080 closer
+3600 further
+1048 closer

@@ -3,7 +3,8 @@ const fileContent = fs.readFileSync("input.txt", "utf8");
 const [n, nums] = fileContent.toString().trim().split("\n");
 const readInt = (param) => parseFloat(param);
 const readArray = (seq, separator) => seq.trim().split(separator).map(value => parseInt(value, 10));
-const result = calcPlace(n, nums);
+const distances = readArray(nums, ' ');
+const result = findMaxPlace(n, distances);
 
 fs.writeFileSync("output.txt", result.toString());
 
@@ -55,3 +56,41 @@ function calcPlace(n, nums) {
     return counter;
 }
 
+//86ms, 12.15Mb
+function findMaxPlace(n, distances) {
+
+    let championResult = distances[0];
+    let championIndex = 0;
+
+    for (let i = 1; i < n; i++) {
+        if (distances[i] > championResult) {
+            championResult = distances[i];
+            championIndex = i;
+        }
+    }
+
+    // 🔍 Найти лучшего кандидата среди тех, кто после чемпиона
+    let bestCandidate = -1;
+    let bestResult = 0;
+
+    for (let i = championIndex + 1; i < n - 1; i++) {
+        if (distances[i] % 10 === 5 && distances[i] > distances[i + 1]) {
+            if (bestCandidate === -1 || distances[i] > bestResult) {
+                bestCandidate = i;
+                bestResult = distances[i];
+            }
+        }
+    }
+
+    if (bestCandidate === -1) return 0;
+
+    // 🏆 Вычислить место лучшего кандидата
+    let betterAttempts = 0;
+    for (let k = 0; k < n; k++) {
+        if (distances[k] > distances[bestCandidate]) {
+            betterAttempts++;
+        }
+    }
+
+    return betterAttempts + 1;
+}

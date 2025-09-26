@@ -1,10 +1,9 @@
 const fs = require('fs');
-const fileContent = fs.readFileSync("input.txt", "utf8");
-const nums = fileContent.toString().trim().split(" ").map(v => Number(v));
-const result = isIncreasingSequence1(nums);
-fs.writeFileSync("output.txt", result.toString());
+const fileContent = fs.readFileSync("input.txt", "utf8").trim();
+const nums = fileContent.split(" ").map(v => Number(v));
 
-//67ms, 6.04Mb
+
+//49ms, 5.41Mb
 function isIncreasingSequence(nums) {
     let counter = 0;
     for (let i = 1; i < nums.length; i++) {
@@ -22,3 +21,6 @@ function isIncreasingSequence1(nums) {
     }
     return 'YES'
 }
+
+const result = isIncreasingSequence1(nums);
+fs.writeFileSync("output.txt", result, "utf8");

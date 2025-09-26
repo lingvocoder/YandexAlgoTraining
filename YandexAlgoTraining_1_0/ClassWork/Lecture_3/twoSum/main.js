@@ -46,7 +46,7 @@ function sumOfTwo(nums, k) {
     return ans;
 }
 
-// Nested cycles
+// Nested cycles O(n^2)
 const twoSumQuadratic = function (nums, target) {
     nums = readArray(nums, ' ');
     target = readInt(k);
