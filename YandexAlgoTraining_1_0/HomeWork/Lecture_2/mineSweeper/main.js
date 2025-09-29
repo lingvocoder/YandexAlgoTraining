@@ -11,7 +11,7 @@ for (let i = 1; i < data.length; i++) {
 const result = swipeMines(params, coords);
 fs.writeFileSync("output.txt", result.toString());
 
-//Некоторая оптимизации 56ms, 5.41mb
+//Некоторая оптимизация 56ms, 5.41mb
 function swipeMines(params, coords) {
     const [N, M, K] = params;
     let field = [];

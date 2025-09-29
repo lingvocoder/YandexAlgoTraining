@@ -4,7 +4,7 @@ const [nums, k] = fileContent.toString().trim().split('\n');
 const readArray = (seq, separator) => seq.trim().split(separator).map(value => Number(value));
 const readInt = (param) => parseFloat(param);
 
-const result = twoSumLinear(nums, k);
+const result = sumOfTwo(nums, k);
 fs.writeFileSync('output.txt', result.toString(), 'utf8');
 
 
