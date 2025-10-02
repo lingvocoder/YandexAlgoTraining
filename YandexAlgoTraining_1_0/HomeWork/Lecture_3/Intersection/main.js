@@ -30,6 +30,22 @@ function countDifferentNumbers(arr1, arr2) {
     }
     return resArr.join(' ');
 }
-
+//143ms, 20.60Mb, сложность —  O(n + m + k log k)
+function findIntersection(arr1, arr2) {
+    const hashTable = {};
+    let resArr = [];
+    for (let i = 0; i < arr1.length; i++) {
+        if (!hashTable.hasOwnProperty(arr1[i])) {
+            hashTable[arr1[i]] = true;
+        }
+    }
+    for (let i = 0; i < arr2.length; i++) {
+        if (hashTable.hasOwnProperty(arr2[i])) {
+            resArr.push(parseFloat(arr2[i]));
+            delete hashTable[arr2[i]];
+        }
+    }
+    return resArr.sort((a, b) => a - b).join(' ');
+}
 
 
